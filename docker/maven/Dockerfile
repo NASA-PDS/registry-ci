@@ -1,8 +1,5 @@
 FROM maven:3.8-jdk-11-slim
 
-# Install git
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
-
 # Cache maven dependency jars
 WORKDIR /tmp
 

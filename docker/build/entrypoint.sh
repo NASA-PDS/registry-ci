@@ -17,9 +17,17 @@ fi
 case $1 in
 harvest)
     echo "Building Harvest ..."
+    git clone https://github.com/NASA-PDS/harvest.git
+    cd harvest
+    mvn package
+    cp target/harvest-*-bin.tar.gz /build
 ;;
 manager)
     echo "Building Registry Manager ..."
+    git clone https://github.com/NASA-PDS/pds-registry-mgr-elastic.git
+    cd pds-registry-mgr-elastic
+    mvn package
+    cp target/registry-manager-*-bin.tar.gz /build
 ;;
 api)
     echo "Building Registry API ..."
