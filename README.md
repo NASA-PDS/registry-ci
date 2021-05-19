@@ -1,6 +1,7 @@
-# NASA PDS New Project Template
+# registry-ci
 
-My new awesome project
+Continuous Integration framework and regression tests for different Registry components, 
+such as Harvest, Registry Manager and API. 
 
 ## Installation
 
