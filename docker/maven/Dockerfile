@@ -10,3 +10,7 @@ RUN mvn verify --fail-never && mvn clean && rm -rf /tmp/pom.xml
 # Regestry Manager jars
 ADD pom/manager/pom.xml /tmp/
 RUN mvn verify --fail-never && mvn clean && rm -rf /tmp/pom.xml
+
+# Extra jars (maven-surefire-plugin, junit, etc.)
+ADD pom/extra/pom.xml /tmp/
+RUN mvn verify --fail-never && mvn clean && rm -rf /tmp/pom.xml
