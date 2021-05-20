@@ -31,6 +31,10 @@ manager)
 ;;
 api)
     echo "Building Registry API ..."
+    git clone https://github.com/NASA-PDS/registry-api-service.git
+    cd registry-api-service
+    mvn package
+    cp target/registry-api-service-*-bin.tar.gz /build
 ;;
 *)
     echo $ERROR
