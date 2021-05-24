@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<harvest nodeName="PDS_ENG">
+
+  <directories>
+    <path>/data/dir1</path>
+  </directories>
+
+  <fileInfo processDataFiles="true" storeLabels="false">
+    <fileRef replacePrefix="/data/dir1/" with="https://naif.jpl.nasa.gov/pub/naif/pds/pds4/orex/orex_spice/spice_kernels/fk/"/>
+  </fileInfo>
+
+  <autogenFields/>
+
+</harvest>
