@@ -1,6 +1,9 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Docker Test
+
+on:
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -12,5 +15,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
+
+    - name: Setup
+      run: mkdir /build
+
+    - name: Build
+      run: docker run --rm --name registry-build -v /build:/build tdddblog/pds_maven_build:1.0 harvest
+
     - name: Test
-      run: docker version
+      run: ls -l /build
