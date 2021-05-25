@@ -17,10 +17,10 @@ jobs:
     # Runs a single command using the runners shell
 
     - name: Setup
-      run: mkdir /build
+      run: mkdir /tmp/build
 
     - name: Build
-      run: docker run --rm --name registry-build -v /build:/build tdddblog/pds_maven_build:1.0 harvest
+      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest
 
     - name: Test
-      run: ls -l /build
+      run: ls -l /tmp/build
