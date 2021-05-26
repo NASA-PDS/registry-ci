@@ -9,5 +9,5 @@ jobs:
 
     steps:
       - run: echo "------------"
-      - uses: actions/test
+      - uses: actions/test@master
       - run: echo "------------"
