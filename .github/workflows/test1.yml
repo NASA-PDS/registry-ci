@@ -1,21 +1,21 @@
-name: Docker Test
+name: Run CI
 
 on:
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   docker:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Setup
       run: mkdir /tmp/build
 
-    - name: Build Registry Components
+    - name: Build Harvest
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest
+    - name: Build Registry Manager
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 manager
+    - name: Build API
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 api
 
     - name: Test
