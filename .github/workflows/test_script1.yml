@@ -9,9 +9,4 @@ jobs:
 
     steps:
       #run: ${GITHUB_WORKSPACE}/docker/scripts/wait_for_http.sh http://localhost:9200
-      - run: pwd
-      - run: echo "------------------------"
-      - run: echo "$GITHUB_WORKSPACE"
-      - run: echo "------------------------"
-      - run: ls -la $GITHUB_WORKSPACE
-      - run: echo "------------------------"
+      - run: "cat ${GITHUB_WORKSPACE}/.github/workflows/test_es.sh"
