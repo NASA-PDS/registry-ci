@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Wait
       #run: ${GITHUB_WORKSPACE}/docker/scripts/wait_for_http.sh http://localhost:9200
-      run: ls -l
-      shell: bash
+      -run: pwd
+      -run: echo "------------------------"
+      -run: ls -l ${GITHUB_WORKSPACE}
+      -run: echo "------------------------"
+      -run: ls -l *
