@@ -19,8 +19,10 @@ jobs:
     - name: Setup
       run: mkdir /tmp/build
 
-    - name: Build
+    - name: Build Registry Components
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest
+      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 manager
+#      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest
 
     - name: Test
       run: ls -l /tmp/build
