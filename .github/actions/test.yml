@@ -1,0 +1,9 @@
+runs:
+  using: "composite"
+  steps: 
+    - run: echo "Test Action 1"
+      shell: bash
+    - run: echo "Test Action 2"
+      shell: bash
+    - run: echo "Test Action 3"
+      shell: bash
