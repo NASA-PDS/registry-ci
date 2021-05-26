@@ -9,8 +9,8 @@ jobs:
 
     steps:
       #run: ${GITHUB_WORKSPACE}/docker/scripts/wait_for_http.sh http://localhost:9200
-      -run: pwd
-      -run: echo "------------------------"
-      -run: ls -l ${GITHUB_WORKSPACE}
-      -run: echo "------------------------"
-      -run: ls -l *
+      - run: pwd
+      - run: echo "------------------------"
+      - run: ls -l ${GITHUB_WORKSPACE}
+      - run: echo "------------------------"
+      - run: ls -l *
