@@ -1,0 +1,13 @@
+name: Test script
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Wait
+      run: ${GITHUB_WORKSPACE}/docker/scripts/wait_for_http.sh http://localhost:9200
+      shell: bash

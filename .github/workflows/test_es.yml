@@ -1,4 +1,4 @@
-name: ES Service
+name: Test Elasticsearch
 
 # Manually triggered
 on:
