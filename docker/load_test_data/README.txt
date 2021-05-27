@@ -10,7 +10,7 @@ Usage:
   --network elastic \
   -e "ES_URL=http://elastic:9200" \
   -v /tmp/build:/build \
-  tdddblog/pds_load_test_data:1.0
+  <DOCKER_IMAGE_NAME>
 
 The container runs following steps:
   - Install Harvest and Registry manager locally in the container (from binary distributions in '/build' directory)
