@@ -33,4 +33,6 @@ jobs:
 #      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 api
 
     - name: Load Test Data
-      run: docker run --rm --name registry-load -e "ES_URL=http://elastic:9200" -v /tmp/build:/build tdddblog/pds_load_test_data:1.0
+      run: >-
+        docker run --rm --name registry-load --network ${{ job.container.network }}
+        -e "ES_URL=http://elastic:9200" -v /tmp/build:/build tdddblog/pds_load_test_data:1.0
