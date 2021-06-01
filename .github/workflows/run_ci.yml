@@ -51,5 +51,5 @@ jobs:
     - name: Test API server
       run: curl localhost:8080/products
 
-    - name: Stop API server
-      run: docker stop api
+#    - name: Stop API server
+#      run: docker stop api
