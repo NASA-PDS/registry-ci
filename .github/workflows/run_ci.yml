@@ -42,6 +42,9 @@ jobs:
         docker run --rm --name registry-load --network ${{ job.container.network }}
         -e "ES_URL=http://elastic:9200" -v /tmp/build:/build tdddblog/pds_load_test_data:1.0
 
+    - name: Wait for Elasticsearch to commit data
+      run: sleep 5
+
     - name: Test Elasticsearch
       run: curl "localhost:9200/registry/_search?q=*&_source=false&pretty"
 
