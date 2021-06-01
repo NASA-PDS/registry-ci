@@ -1,7 +1,7 @@
 # docker network create elastic
 
 docker run \
-  --name="es01" \
+  --name="elastic" \
   --network=elastic \
   --rm \
   --detach \
