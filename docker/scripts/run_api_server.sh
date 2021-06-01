@@ -1,5 +1,5 @@
 docker run \
-  --name="api" \
+  --name=api \
   --network=elastic \
   --rm \
   --detach \
