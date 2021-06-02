@@ -49,7 +49,9 @@ jobs:
       run: curl "localhost:9200/registry/_search?q=*&_source=false&pretty"
 
     - name: Test API server
-      run: curl localhost:8080/products
+      run: >-
+        docker run --rm --name=newman --network ${{ job.container.network }}
+        -v /tmp/build/postman:/etc/newman postman/newman:latest run postman_collection.json 
 
     - name: Stop API server
       run: docker stop -t 1 api
