@@ -17,3 +17,4 @@ The container runs following steps:
   - Run Harvest to process test data stored in the container
   - Run Registry Manager to create Registry indices in Elasticsearch
   - Run Registry Manager to load data files created by Harvest into Elasticsearch
+  - Copy Postman test scripts to '/build' directory

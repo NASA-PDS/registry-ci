@@ -54,3 +54,8 @@ harvest -c /cfg/dir1.xml
 echo "Loading test data into Elasticsearch ..."
 registry-manager create-registry -es $ES_URL
 registry-manager load-data -dir /tmp/harvest/out/ -es $ES_URL
+
+# ------- Copy postman test scripts to shared dir -----------
+
+echo "Installing test scripts ..."
+cp -R /postman /build/postman

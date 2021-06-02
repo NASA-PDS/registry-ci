@@ -6,6 +6,7 @@ FROM openjdk:11-slim
 
 COPY cfg /cfg
 COPY data /data
+COPY postman /postman
 
 # -------------------------------------------------------------
 # Entry point
