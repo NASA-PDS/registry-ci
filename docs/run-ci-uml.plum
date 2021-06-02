@@ -1,0 +1,46 @@
+@startuml
+actor GitHubAction #99FF99
+participant "Docker Shared Dir" #99FF99
+participant "Build Container"
+participant "Elasticsearch Container"
+participant "Data Container"
+participant "API Server Container"
+participant "Test Container"
+
+
+GitHubAction -> "Elasticsearch Container": << start >>
+activate "Elasticsearch Container" #99FFFF
+
+GitHubAction -> "Build Container": << start harvest >>
+activate "Build Container"
+"Build Container" -> "Docker Shared Dir": copy harvest.tgz
+deactivate "Build Container"
+
+GitHubAction -> "Build Container": << start manager >>
+activate "Build Container"
+"Build Container" -> "Docker Shared Dir": copy manager.tgz
+deactivate "Build Container"
+
+GitHubAction -> "Build Container": << start api >>
+activate "Build Container"
+"Build Container" -> "Docker Shared Dir": copy api.tgz
+deactivate "Build Container"
+
+GitHubAction -> "API Server Container": << start >>
+activate "API Server Container" #99FFFF
+
+GitHubAction -> "Data Container": << start >>
+activate "Data Container"
+"Data Container"-> "Elasticsearch Container":  load data
+"Data Container"-> "Docker Shared Dir":  copy test scripts
+deactivate "Data Container"
+
+GitHubAction -> "Test Container": << start >>
+activate "Test Container"
+"Test Container" -> "API Server Container": run tests
+"API Server Container" -> "Elasticsearch Container"
+deactivate "Test Container"
+
+deactivate "API Server Container"
+deactivate "Elasticsearch Container"
+@enduml

@@ -3,13 +3,9 @@
 Continuous Integration framework and regression tests for different Registry components, 
 such as Harvest, Registry Manager and API. 
 
-## Installation
+## Run CI GitHub Action
 
-_Installation instructions here_
-
-## Usage
-
-_Basic usage instructions here_
+![](docs/run-ci-uml.png)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
