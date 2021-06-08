@@ -7,9 +7,13 @@ if [ ! -d "/build/" ]; then
 fi
 
 # Validate arguments
-ERROR="Pass one of the following arguments: 'harvest', 'manager', 'api'."
+ERROR="Usage: entrypoint.sh { harvest | manager | api } [branch]"
 
-if [ $# != 1 ]; then
+if [ $# == 1 ]; then
+    BRANCH=master
+elif [ $# == 2 ]; then
+    BRANCH=$2
+else
     echo $ERROR
     exit 1
 fi
@@ -19,6 +23,7 @@ harvest)
     echo "Building Harvest ..."
     git clone https://github.com/NASA-PDS/harvest.git
     cd harvest
+    git checkout $BRANCH
     mvn package
     cp target/harvest-*-bin.tar.gz /build
 ;;
@@ -26,6 +31,7 @@ manager)
     echo "Building Registry Manager ..."
     git clone https://github.com/NASA-PDS/pds-registry-mgr-elastic.git
     cd pds-registry-mgr-elastic
+    git checkout $BRANCH
     mvn package
     cp target/registry-manager-*-bin.tar.gz /build
 ;;
@@ -33,6 +39,7 @@ api)
     echo "Building Registry API ..."
     git clone https://github.com/NASA-PDS/registry-api-service.git
     cd registry-api-service
+    git checkout $BRANCH
     mvn package
     cp target/registry-api-service-*-bin.tar.gz /build
 ;;
@@ -41,4 +48,3 @@ api)
     exit 1
 ;;
 esac
-
