@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# != 1 ]; then
-    echo "Missing URL parameter."
+    echo "Usage: wait_for_http.sh <URL>"
     exit 1
 fi
 
@@ -12,7 +12,7 @@ iterations=0
 
 while true
 do
-    http_code=$(curl -w '%{http_code}' -o /dev/null --max-time 5 --silent --fail $url)
+    http_code=$(curl -w '%{http_code}' -o /dev/null --max-time 5 --silent --fail -L $url)
     if [ "$http_code" -eq 200 ]; then
         break
     fi
