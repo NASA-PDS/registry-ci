@@ -1,5 +1,6 @@
 name: 'Registry CI'
 description: 'PDS Registry Integration Tests'
+
 inputs:
   harvest-branch:
     description: 'Git branch of NASA-PDS/harvest repo'
@@ -13,20 +14,28 @@ inputs:
     description: 'Git branch of NASA-PDS/registry-api-service repo'
     required: true
     default: 'master'
+
 runs:
   using: "composite"
   steps:
     - name: Preparing to build
+      shell: bash
       run: mkdir /tmp/build
 
     - name: Build Harvest
+      shell: bash
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest ${{ inputs.harvest-branch }}
+
     - name: Build Registry Manager
+      shell: bash
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 manager ${{ inputs.manager-branch }}
+
     - name: Build API
+      shell: bash
       run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 api ${{ inputs.api-branch }}
 
     - name: Start API server
+      shell: bash
       run: >-
         docker run --rm --name api --detach --network ${{ job.container.network }}
         -p 8080:8080 -v /tmp/build:/build tdddblog/pds_api_server:1.0
