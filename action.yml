@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: ${{ github.action_path }}/docker/scripts/run_build.sh harvest ${{ inputs.harvest-branch }}
+      run: bash ${{ github.action_path }}/docker/scripts/run_build.sh harvest ${{ inputs.harvest-branch }}
 
     - shell: bash
-      run: ${{ github.action_path }}/docker/scripts/run_build.sh manager ${{ inputs.manager-branch }}
+      run: bash ${{ github.action_path }}/docker/scripts/run_build.sh manager ${{ inputs.manager-branch }}
