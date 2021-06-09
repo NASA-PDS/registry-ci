@@ -15,23 +15,18 @@ inputs:
     default: 'master'
 runs:
   using: "composite"
-
-  services:
-    elastic:
-      image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
-      env:
-        discovery.type: single-node
-      ports:
-        - 9200:9200
-      options: >-
-        --health-cmd "curl localhost:9200"
-        --health-interval 10s
-        --health-timeout 5s
-        --health-retries 5
   steps:
-    - run: echo Harvest ${{ inputs.harvest-branch }}.
-      shell: bash
-    - run: echo Manager ${{ inputs.manager-branch }}.
-      shell: bash
-    - run: echo API ${{ inputs.api-branch }}.
-      shell: bash
+    - name: Preparing to build
+      run: mkdir /tmp/build
+
+    - name: Build Harvest
+      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 harvest ${{ inputs.harvest-branch }}
+    - name: Build Registry Manager
+      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 manager ${{ inputs.manager-branch }}
+    - name: Build API
+      run: docker run --rm --name registry-build -v /tmp/build:/build tdddblog/pds_maven_build:1.0 api ${{ inputs.api-branch }}
+
+    - name: Start API server
+      run: >-
+        docker run --rm --name api --detach --network ${{ job.container.network }}
+        -p 8080:8080 -v /tmp/build:/build tdddblog/pds_api_server:1.0
