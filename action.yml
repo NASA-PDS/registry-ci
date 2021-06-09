@@ -16,9 +16,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Harvest ${{ harvest-branch }}.
+    - run: echo Harvest ${{ inputs.harvest-branch }}.
       shell: bash
-    - run: echo Manager ${{ manager-branch }}.
+    - run: echo Manager ${{ inputs.manager-branch }}.
       shell: bash
-    - run: echo API ${{ api-branch }}.
+    - run: echo API ${{ inputs.api-branch }}.
       shell: bash
