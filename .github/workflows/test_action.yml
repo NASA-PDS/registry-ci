@@ -11,5 +11,5 @@ jobs:
       - uses: NASA-PDS/registry-ci@master
         with: 
           harvest-branch: 'bug-130'
-          manager-branch: 'manager-1'
-          api-branch: 'api-2'
+          manager-branch: 'master'
+          api-branch: 'master'
