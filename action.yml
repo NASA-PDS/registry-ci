@@ -1,0 +1,24 @@
+name: 'Registry CI'
+description: 'PDS Registry Integration Tests'
+inputs:
+  harvest-branch:
+    description: 'Git branch of NASA-PDS/harvest repo'
+    required: true
+    default: 'master'
+  manager-branch:
+    description: 'Git branch of NASA-PDS/pds-registry-mgr-elastic repo'
+    required: true
+    default: 'master'
+  api-branch:
+    description: 'Git branch of NASA-PDS/registry-api-service repo'
+    required: true
+    default: 'master'
+runs:
+  using: "composite"
+  steps:
+    - run: echo Harvest ${{ harvest-branch }}.
+      shell: bash
+    - run: echo Manager ${{ manager-branch }}.
+      shell: bash
+    - run: echo API ${{ api-branch }}.
+      shell: bash
