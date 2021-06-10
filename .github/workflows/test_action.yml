@@ -8,12 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug
-        run: echo ${{ job.container.network }}
-
       - uses: NASA-PDS/registry-ci@master
         with: 
           harvest-branch: 'bug-130'
           manager-branch: 'master'
           api-branch: 'master'
-          docker-network: ${{ job.container.network }}
