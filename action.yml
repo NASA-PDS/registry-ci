@@ -23,7 +23,7 @@ runs:
   steps:
 
     - shell: bash
-      run: echo "Network param: " ${{ inputs.docker-network }}
+      run: echo Network param: ${{ inputs.docker-network }}
 
     - shell: bash
-      run: echo "Network job: " ${{ job.container.network }}
+      run: echo Network job: ${{ job.container.network }}
