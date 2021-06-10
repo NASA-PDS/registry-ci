@@ -1,14 +1,19 @@
-# docker network create elastic
+if [ $# != 1 ]; then
+    echo "Usage: run_es.sh <docker_network_name>"
+    exit 1
+fi
+
+echo "Starting Elasticsearch. Docker network: $1"
+
+# ------------------------------------------------------------------------
+# Run Docker image
+# ------------------------------------------------------------------------
 
 docker run \
-  --name="elastic" \
-  --network=elastic \
+  --name=elastic \
+  --network=$1 \
   --rm \
   --detach \
   -p 9200:9200 \
   -e "discovery.type=single-node" \
-  --health-cmd "curl localhost:9200" \
-  --health-interval 10s \
-  --health-timeout 5s \
-  --health-retries 5 \
   docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2

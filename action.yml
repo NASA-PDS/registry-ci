@@ -18,8 +18,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - shell: bash
+    - name: Create Docker network
+      shell: bash
       run: docker network create registry-ci
 
-    - shell: bash
-      run: docker network list
+    - name: Start Elasticsearch
+      shell: bash
+      run: bash ${{ github.action_path }}/docker/scripts/run_es.sh registry-ci
+
+    - name: Wait for Elasticsearch to start
+      shell: bash
+      run: bash ${{ github.action_path }}/docker/scripts/wait_for_http.sh localhost:9200

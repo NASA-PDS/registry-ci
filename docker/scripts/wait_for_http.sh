@@ -6,7 +6,7 @@ if [ $# != 1 ]; then
 fi
 
 url=$1
-max_iterations=10
+max_iterations=20
 wait_seconds=6
 iterations=0
 
