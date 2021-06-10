@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Debug
-        run: echo "DEBUG: ${{ job.container.network }}"
+        run: echo ${{ job.container.network }}
 
       - uses: NASA-PDS/registry-ci@master
         with: 
