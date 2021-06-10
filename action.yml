@@ -20,3 +20,6 @@ runs:
   steps:
     - shell: bash
       run: docker network create registry-ci
+
+    - shell: bash
+      run: docker network list
