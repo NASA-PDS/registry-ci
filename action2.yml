@@ -21,9 +21,18 @@ inputs:
 runs:
   using: "composite"
   steps:
-
+    # Build Harvest
     - shell: bash
-      run: echo "Network param: ${{ inputs.docker-network }}"
+      run: bash ${{ github.action_path }}/docker/scripts/run_build.sh harvest ${{ inputs.harvest-branch }}
 
+    # Build Registry manager
     - shell: bash
-      run: echo "Network job: ${{ job.container.network }}"
+      run: bash ${{ github.action_path }}/docker/scripts/run_build.sh manager ${{ inputs.manager-branch }}
+
+    # Build API Server
+    - shell: bash
+      run: bash ${{ github.action_path }}/docker/scripts/run_build.sh api ${{ inputs.api-branch }}
+
+    # Start API Server
+    - shell: bash
+      run: bash ${{ github.action_path }}/docker/scripts/run_api_server.sh ${{ inputs.docker-network }}

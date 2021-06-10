@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug
+        run: echo "DEBUG: ${{ job.container.network }}"
+
       - uses: NASA-PDS/registry-ci@master
         with: 
           harvest-branch: 'bug-130'
