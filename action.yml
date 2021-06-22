@@ -5,15 +5,15 @@ inputs:
   harvest-branch:
     description: 'Git branch of NASA-PDS/harvest repo'
     required: true
-    default: 'master'
+    default: 'main'
   manager-branch:
     description: 'Git branch of NASA-PDS/pds-registry-mgr-elastic repo'
     required: true
-    default: 'master'
+    default: 'main'
   api-branch:
     description: 'Git branch of NASA-PDS/registry-api-service repo'
     required: true
-    default: 'master'
+    default: 'main'
 
 runs:
   using: "composite"
