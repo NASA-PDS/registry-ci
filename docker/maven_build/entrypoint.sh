@@ -10,7 +10,7 @@ fi
 ERROR="Usage: entrypoint.sh { harvest | manager | api } [branch]"
 
 if [ $# == 1 ]; then
-    BRANCH=master
+    BRANCH=main
 elif [ $# == 2 ]; then
     BRANCH=$2
 else
