@@ -13,6 +13,6 @@ Usage:
   docker run --rm --name registry-build -v /tmp/build:/build <DOCKER_IMAGE_NAME> api
 
 The container runs following steps:
-  - Checkout master branch of one of the Registry components (harvest, manager, api)
+  - Checkout main branch of one of the Registry components (harvest, manager, api)
   - Run maven build
   - Copy generated tar.gz file into '/build' directory.
